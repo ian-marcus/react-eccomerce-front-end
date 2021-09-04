@@ -1,0 +1,358 @@
+ html  {
+
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+
+}
+
+.footerBackgroundColor{
+  background-color: rgba(236, 240, 241, 1);
+}
+
+.footerBackgroundColor h5 {
+  color: #071a36;
+}
+
+.footerText {
+  margin: 0;
+}
+.form-group {
+  position: relative;
+}
+
+.label {
+  color: #999;
+  font-size: 16px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 7px;
+  left: 15px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+.spaceForNoText {
+  margin-bottom: 30px;
+}
+
+.spaceForText {
+  margin-bottom: 30px;
+}
+
+.input:focus ~ .label,
+.input:valid ~ .label {
+  top: -25px;
+  left: -0.1px;
+  font-size: 16px;
+  color: black;
+  /*font-weight: bold;*/
+}
+
+.input-email:focus ~ .label,
+.input-email:not(:placeholder-shown) ~ .label {
+  top: -25px;
+  left: -0.1px;
+  font-size: 16px;
+  color: black;
+  /*font-weight: bold;*/
+}
+
+.loginInvalid {
+  background-color: rgba(255, 95, 61, 0.1);
+  border-radius: 5px;
+  /*font-weight: lighter;*/
+}
+
+.forgotPassword {
+  border-radius: 5px;
+}
+
+.forgotPasswordText {
+  margin-bottom: 40px;
+}
+
+.sale {
+  background-color: #435e5b;
+  height: 50px;
+}
+
+.navBar {
+  background-color: #071a36;
+
+}
+
+.dashboard {
+  color: black;
+}
+
+.searchBar {
+  width: 650px;
+}
+
+.cartItems {
+  width: 60px;
+  text-align: center;
+}
+
+#addToCartBtn {
+  background-color: #071a36;
+  width: 200px;
+}
+
+#addToWishList {
+ background-color: rgba(238, 238, 238, 1); 
+  width: 200px;
+  color: #071a36; 
+}
+
+.quantity {
+  margin: 0;
+  padding-top: 7px;
+  margin-right: 10px;
+}
+
+.homePageProductCard {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.5s ease;
+}
+
+.homePageProductCard:hover .overlay {
+  display: block;
+  background: rgba(0, 0, 0, .5);
+}
+
+.title {
+  position: absolute;
+  left: 75px;
+  top: 120px;
+  font-weight: 700;
+  font-size: 30px;
+/*  text-align: center;*/
+  text-transform: uppercase;
+  color: white;
+  z-index: 1;
+  transition: top .5s ease;
+}
+
+.titleLenovo {
+  position: absolute;
+  left: 45px;
+  top: 120px;
+  font-weight: 700;
+  font-size: 30px;
+/*  text-align: center;*/
+  text-transform: uppercase;
+  color: white;
+  z-index: 1;
+  transition: top .5s ease;
+}
+
+.titleAsus {
+  position: absolute;
+  left: 56px;
+  top: 180px;
+  font-weight: 700;
+  font-size: 30px;
+/*  text-align: center;*/
+  text-transform: uppercase;
+  color: white;
+  z-index: 1;
+  transition: top .5s ease;
+}
+
+.titleMSI {
+  position: absolute;
+  left: 58px;
+  top: 120px;
+  font-weight: 700;
+  font-size: 30px;
+/*  text-align: center;*/
+  text-transform: uppercase;
+  color: white;
+  z-index: 1;
+  transition: top .5s ease;
+}
+
+.titleDell {
+  position: absolute;
+  left: 99px;
+  top: 120px;
+  font-weight: 700;
+  font-size: 30px;
+/*  text-align: center;*/
+  text-transform: uppercase;
+  color: white;
+  z-index: 1;
+  transition: top .5s ease;
+}
+
+.homePageProductCard:hover .title {
+  top: 100px;
+}
+
+.homePageProductCard:hover .titleLenovo {
+  top: 100px;
+}
+
+.homePageProductCard:hover .titleAsus {
+  top: 157px;
+}
+
+.homePageProductCard:hover .titleMSI {
+  top: 100px;
+}
+
+.homePageProductCard:hover .titleDell {
+  top: 100px;
+}
+
+.DIVbuyNowBtn {
+  position: absolute;
+  left: 95px;
+  top: 140px;
+ /* text-align: center;*/
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+
+.DIVbuyNowBtnAsus {
+  position: absolute;
+  width: 500px;
+  left: 95px;
+  top: 200px;
+ /* text-align: center;*/
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+
+.DIVbuyNowBtn {
+  z-index: 1;
+}
+
+.DIVbuyNowBtnAsus {
+  z-index: 1;
+}
+
+.homePageProductCard:hover .DIVbuyNowBtn {
+  opacity: 1;
+}
+
+.homePageProductCard:hover .DIVbuyNowBtnAsus {
+  opacity: 1;
+}
+
+#productHighlightsCard {
+  height: 200px;
+  width:  100%;
+  border-radius: 3px;
+  /* box-shadow: 0px 0px 0px grey;
+  -webkit-transition:  box-shadow .3s ease-out;*/
+ /* box-shadow: .8px .9px 3px grey;*/
+/*    opacity: 1;
+  -webkit-transform: scale(1,1);
+  -webkit-transition-timing-function: ease-out;
+  -webkit-transition-duration: 250ms;
+  -moz-transform: scale(1,1);
+  -moz-transition-timing-function: ease-out;
+  -moz-transition-duration: 250ms;*/
+}
+
+#productHighlightsCard:hover{ 
+/*  box-shadow: 1px 8px 10px grey;
+  -webkit-transition:  box-shadow .3s ease-in;*/
+  /* opacity: .7;
+  -webkit-transform: scale(1.05,1.07);
+  -webkit-transition-timing-function: ease-out;
+  -webkit-transition-duration: 250ms;
+  -moz-transform: scale(1.05,1.07);
+  -moz-transition-timing-function: ease-out;
+  -moz-transition-duration: 250ms;
+  position: relative;
+  z-index: 99;
+  overflow: hidden;*/
+}
+
+#productHighlightsCardCenter {
+  height: 425px;
+  width: 100%;
+  border-radius: 3px;
+
+}
+
+#productHighlightsImage {
+  padding: 0;
+  width: 100%;
+  height: 10vw;
+  object-fit: cover;
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.carousel-indicators,
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  filter: invert(1);
+  padding: 0;
+}
+
+#productCard {
+  box-shadow: 0px 0px 0px grey;
+  -webkit-transition:  box-shadow .3s ease-out;
+ /* box-shadow: .8px .9px 3px grey;*/
+ min-height: 320px;
+
+}
+#productCard:hover{ 
+  box-shadow: 1px 8px 10px grey;
+  -webkit-transition:  box-shadow .3s ease-in;
+}
+
+#linkToProduct {
+  text-decoration: none;
+  color:  red;
+}
+
+.productName, .line-clamp {
+  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#registerBtn {
+   background-color: #071a36;
+}
+
+#loginBtn {
+  background-color: #071a36;
+}
+
+.storeFeatures {
+  background-color: rgba(228, 233, 237, 1);
+}
+
+.storeFeatures h5 {
+  color:  #071a36;
+}
