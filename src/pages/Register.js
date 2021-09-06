@@ -88,7 +88,8 @@ export default function Register(){
 						Swal.fire({
 							icon: 'success',
 							title: 'Success!',
-							text: 'Thank you for registering!'
+							text: 'Thank you for registering!',
+							confirmButtonColor: "#071a36"
 						})
 						history.push('/login')
 
@@ -116,7 +117,7 @@ export default function Register(){
 
 	return(
 		<>
-			<Row className="d-flex justify-content-center">
+			<Row className="d-flex justify-content-center mb-5">
 				<Col xs={12} md={4}>
 					<Card className="mt-3">
 						<Card.Title> 

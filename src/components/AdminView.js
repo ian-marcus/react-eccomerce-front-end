@@ -86,7 +86,7 @@ export default function AdminView(props){
 	const addProduct = (e)=>{
 		e.preventDefault();
 
-		fetch('http://localhost:4000/products/create', {
+		fetch(`${ process.env.REACT_APP_API_URL }/products/create`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -134,7 +134,7 @@ export default function AdminView(props){
 	const editProduct = (e, productId) =>{
 		e.preventDefault()
 
-		fetch(`http://localhost:4000/products/update/${ productId }`, {
+		fetch(`${ process.env.REACT_APP_API_URL }/products/update/${ productId }`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
@@ -170,7 +170,7 @@ export default function AdminView(props){
 
 	//function for deleting/archive a product
 	const archiveToggle = (productId, isActive) => {
-		fetch(`http://localhost:4000/products/archive/${productId}`,{
+		fetch(`${ process.env.REACT_APP_API_URL }/products/archive/${productId}`,{
 			method: 'DELETE',
 			headers: {
 				'Content-Type': 'application/json',
@@ -202,7 +202,7 @@ export default function AdminView(props){
 
 	//function for activating/unarchive a product
 	const activateToggle = (productId, isActive) => {
-		fetch(`http://localhost:4000/products/activate/${productId}`,{
+		fetch(`${ process.env.REACT_APP_API_URL }/products/activate/${productId}`,{
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',

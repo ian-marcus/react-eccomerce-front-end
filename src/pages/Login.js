@@ -98,7 +98,8 @@ export default function Login(){
 										Swal.fire({
 											icon: 'success',
 											title: 'Success!',
-											text: 'Logged in successfully!'
+											text: 'Logged in successfully!',
+											confirmButtonColor: "#071a36"
 										})
 
 										//fetch user's details from out token

@@ -1,54 +1,19 @@
 import React, { useState, useEffect, useContext } from 'react'
 
-import { Container, Table, Button, Card } from 'react-bootstrap';
+import { Container, Table, Button, Card, Row, Col } from 'react-bootstrap';
 
 import UserContext from '../UserContext'
 
 //react-router
 import { Link } from 'react-router-dom';
 
-export default function Cart() {
+export default function CartPage() {
 
-    const {user} = useContext(UserContext);
-
-    const [ table, setTable ] = useState([]);
+    // const [productsArr, setProductsArr] = useState([])
+    const [cart, setCart] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:4000/users/myOrders', {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-            }
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            const list = data.map(orders => {
-                return(
-                    <tr>
-                        {orders.orderedItems.map(subItems => {
-                            console.log(subItems.productName)
-                            return (
-                                <>
-                                    <td>{subItems.productName}</td>
-                                    <td>{subItems.productDescription}</td>
-                                    <td>{subItems.productPrice}</td>
-                                    <td>{subItems.quantity}</td>
-                                    <td>{subItems.totalAmount}</td>
-                                    <td>
-                                    <Button variant="danger">Remove</Button>
-                                    </td>
-                                </>
-                                )
-                            })}
-                    </tr>
-                )
-        })
-         setTable(list)     
-    }, [])
-}
-
-useEffect(() => {
-        fetch('http://localhost:4000/users/myOrders', {
+        fetch(`${ process.env.REACT_APP_API_URL }/cart/myOrders`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("accessToken")}`
             }
@@ -57,19 +22,16 @@ useEffect(() => {
         .then(data => {
             // localStorage.setItem('list', JSON.stringify(data))
             console.log(data)
-            const list = data.map(orders => {
+            const list = data.map(product => {
                 return(
                     <tr>
-                        {orders.orderedItems.map(subItems => {
-                            console.log(subItems.productName)
+                        {product.productInfo.map(subItems => {
                             return (
                                 <>
-                                    <td>{subItems.productName}</td>
-                                    <td>{subItems.productDescription}</td>
+                                    <td className="cartProductName">{subItems.productName}</td>
                                     <td>{subItems.productPrice}</td>
-                                    <td>{subItems.quantity}</td>
-                                    <td>{subItems.totalAmount}</td>
-                                    <td>
+                                    <td >{subItems.quantity}</td>
+                                    <td className="removeBtn">
                                     <Button variant="danger">Remove</Button>
                                     </td>
                                 </>
@@ -78,6 +40,44 @@ useEffect(() => {
                     </tr>
                 )
             })
-            setTable(list)   
+            setCart(list)   
         })
     }, [])
+
+
+
+    return (
+    <>
+        <Container className="cartPage mt-5">
+                <Row>
+                    <Col md={9}>
+                        <Table striped hover responsive>
+                            <thead className="bg-light" variant="dark">
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {cart}
+                            </tbody>
+                        </Table>
+                    </Col>
+                    <Col md={3}>
+                        <Card className="cartCard">
+                            <Card.Body>
+
+                            </Card.Body>
+                            <Card.Footer>
+                                <Button block variant="warning">Checkout</Button>
+                            </Card.Footer>
+                        </Card>
+                    </Col>
+                </Row>
+        </Container>
+    </>
+        
+    )
+}

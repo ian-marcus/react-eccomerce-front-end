@@ -49,7 +49,7 @@ export default function AppNavbar(){
 		{user.isAdmin !== true ?
 			<>
 			<Nav.Link >My item</Nav.Link>	
-			<Nav.Link >Cart</Nav.Link>
+			<Nav.Link as={NavLink} to="/add-to-cart">Cart</Nav.Link>
 			</>
 			:
 			<Link to="/dashboard"><Button variant="warning">Dashboard</Button></Link>	
@@ -65,7 +65,7 @@ export default function AppNavbar(){
 		<NavDropdown.Item as={NavLink} to="/register">Register</NavDropdown.Item>
 		</NavDropdown>
 			<Nav.Link >My item</Nav.Link>	
-			<Nav.Link >Cart</Nav.Link>
+			<Nav.Link as={NavLink} to="/add-to-cart">Cart</Nav.Link>
 		</>
 	)
 

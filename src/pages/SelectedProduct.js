@@ -3,11 +3,14 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Container, Card, Button, Row, Col, Carousel } from 'react-bootstrap';
 //import router
 import { Link, useHistory, useParams } from 'react-router-dom';
+
 import UserContext from '../UserContext';
+
+import Swal from 'sweetalert2';
 //images
-import product1 from '../img/product1.jpg'
-import product2 from '../img/product2.jpg'
-import product3 from '../img/product3.jpg'
+import product1 from '../img/product1.jpg';
+import product2 from '../img/product2.jpg';
+import product3 from '../img/product3.jpg';
 
 export default function SelectedProduct(){
 	const history = useHistory(); 
@@ -18,7 +21,7 @@ export default function SelectedProduct(){
 	const [description, setDescription] = useState("")
 	const [price, setPrice] = useState("")
 	
-	const [count, setCount] = useState(1)
+	const [quantity, setQuantity] = useState(1)
 
 	const { productId } = useParams();
 
@@ -34,63 +37,75 @@ export default function SelectedProduct(){
 		})
 	},[])
 
-	if(count === "" || count === "0"){
-		setCount(parseInt(1))
+	if(quantity === "" || quantity === "0"){
+		setQuantity(parseInt(1))
 	} 
-	console.log(count)
+	console.log(quantity)
 
 	function decrement(){
-		if(count < 2){
+		if(quantity < 2){
 			
 		} else {
-			setCount(count - 1)
+			setQuantity(quantity - 1)
 		}
 	}
 
 	function increment(){
-		if(count < 20){
-			if(count === String){
-				setCount(parseInt(count, 10) + 1)
+		if(quantity < 20){
+			if(quantity === String){
+				setQuantity(parseInt(quantity, 10) + 1)
 			} else {
-				setCount(parseInt(count, 10) + 1)
+				setQuantity(parseInt(quantity, 10) + 1)
 			}
 		}
 		
 	}
 
-	console.log(typeof(count))
-	//for enroll button
-	// const enroll = (productId) => {
-	// 	fetch(`${ process.env.REACT_APP_API_URL }/users/enroll`, {
-	// 		method: 'POST',
-	// 		headers: {
-	// 			'Content-Type': 'application/json',
-	// 			Authorization: `Bearer ${localStorage.getItem('accessToken')}`
-	// 		},
-	// 		body: JSON.stringify({
-	// 			productId: productId
-	// 		})
-	// 	})
-	// 	.then(res => res.json())
-	// 	.then(data => {
-	// 		console.log(data)
-	// 		if(data === true){
-	// 			Swal.fire({
-	// 				icon: 'success',
-	// 				title: 'Success',
-	// 				text: 'You have successfully enrolled to this course.'
-	// 			})
+	console.log(typeof(quantity))
 
-	// 			history.push('/products')
-	// 		} else {
-	// 			Swal.fire({
-	// 				icon: 'error',
-	// 				title: 'Something went wrong.',
-	// 				text: 'Please try again.'
-	// 			})
-	// 		}
-	// 	})
-	// }
+	function addToCart(productId){
+
+        fetch(`${ process.env.REACT_APP_API_URL }/cart/add-to-cart`,{
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+            	productId: productId,
+                quantity: quantity,   
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+        	if(data === true){
+        		console.log(data)
+        		Swal.fire({
+        			icon: 'success',
+        		  	title: 'Success!',
+        		  	text: `You have added ${quantity} item/s in your cart`,
+        		  	showDenyButton: true,
+        		  	confirmButtonText: `Continue Shopping`,
+        		  	denyButtonText: `Proceed to Checkout`,
+        		  	confirmButtonColor: "#f0ad4e",
+        		  	denyButtonColor: "#071a36"
+        		}).then((result) => {
+        		  /* Read more about isConfirmed, isDenied below */
+        		  if (result.isDenied) {
+        		    history.push('/add-to-cart')
+        		  }
+        		})
+
+				
+        	} else {
+        		Swal.fire({
+				icon: 'error',
+				title: 'Something went wrong.',
+				text: 'Please try again.'
+				})
+        	}
+        })
+    }
 
 	let buttonsForUserAndAdmin = (user.email !== null) ?
 	(
@@ -109,7 +124,7 @@ export default function SelectedProduct(){
 				<Button size="lg"  className="mr-3" id="addToWishList" variant="outline-secondary">
 					Add to wishlist
 				</Button>
-				<Button variant="dark" id="addToCartBtn" size="lg">
+				<Button variant="dark" id="addToCartBtn" size="lg" onClick={() => addToCart(productId)}>
 					Add to cart
 				</Button>
 				</div>
@@ -129,11 +144,8 @@ export default function SelectedProduct(){
 		</>
 	)
 
-	
-	
-	
 	return(
-		<Container>
+		<Container className="mb-5">
 			<Row className="mt-5">
 				<Col xs={12} md={6}>
 					<Carousel interval={null} variant="dark">
@@ -176,7 +188,7 @@ export default function SelectedProduct(){
 									<p className="quantity">Quantity</p>
 								  	<button class="btn btn-outline-secondary" type="button" onClick={decrement}>-</button>
 								</div>
-							  	<input InputProps={{ inputProps: { min: 1, max: 20 } }} id="quantity"value={count} onChange={e => setCount(e.target.value)} type="number" class="cartItems focus-visible data-focus-visible-added" parse={value => parseInt(value, 10)}/>
+							  	<input InputProps={{ inputProps: { min: 1, max: 20 } }} id="quantity" value={quantity} onChange={e => setQuantity(e.target.value)} type="number" class="cartItems focus-visible data-focus-visible-added" parse={value => parseInt(value, 10)}/>
 							  	<div class="input-group-append">
 							    <button class="btn btn-outline-secondary" type="button" onClick={increment}>+</button>
 							  	</div>

@@ -356,3 +356,16 @@ input::-webkit-inner-spin-button {
 .storeFeatures h5 {
   color:  #071a36;
 }
+
+.cartPage {
+  height: 100vh;
+}
+
+.cartCard {
+  height: 100%;
+}
+
+.removeBtn {
+  width: 50px;
+}
+

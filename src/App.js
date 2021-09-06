@@ -18,6 +18,7 @@ import LaptopPage from './pages/LaptopPage';
 import KeyboardPage from './pages/KeyboardPage';
 import AccessoriesPage from './pages/AccessoriesPage';
 import DashboardPage from './pages/DashboardPage';
+import CartPage from './pages/CartPage';
 
 //components
 import AppNavbar from './components/AppNavbar';
@@ -63,7 +64,8 @@ function App() {
               < Route exact path="/products/category-keyboard" component={KeyboardPage} />
               < Route exact path="/products/category-accessories" component={AccessoriesPage} />
               < Route exact path="/products/:productId" component={SelectedProduct}/>
-              < Route exact path="/dashboard" component={DashboardPage}/>
+              < Route exact path="/dashboard" component={DashboardPage}>{user.isAdmin !== true ? <NotFound/> : <DashboardPage />}</Route>
+              < Route exact path="/add-to-cart" component={CartPage}/>
               < NotFound />
             </Switch> 
           < Footer />
