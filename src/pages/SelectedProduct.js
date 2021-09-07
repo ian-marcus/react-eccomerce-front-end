@@ -183,7 +183,16 @@ export default function SelectedProduct(){
 						<Card.Body>
 							<h2 className="text-primary mb-3">&#8369;{price}</h2>
 							<p>Shipping	<strong>Standard Delivery &#8369;200</strong></p>
-							
+							<div class="input-group mb-3 cartItems">
+								<div class="input-group-prepend">
+									<p className="quantity">Quantity</p>
+								  	<button class="btn btn-outline-secondary" type="button" onClick={decrement}>-</button>
+								</div>
+							  	<input InputProps={{ inputProps: { min: 1, max: 20 } }} id="quantity" value={quantity} onChange={e => setQuantity(e.target.value)} type="number" class="cartItems focus-visible data-focus-visible-added" parse={value => parseInt(value, 10)}/>
+							  	<div class="input-group-append">
+							    <button class="btn btn-outline-secondary" type="button" onClick={increment}>+</button>
+							  	</div>
+							</div>
 
 							{buttonsForUserAndAdmin}
 
